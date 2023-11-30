@@ -1,15 +1,18 @@
 ## Operation Enigma Write up
 
-One challenge stuck out and I rather enjoyed. I really like cryptography, so this one had my name on it. Some background...
+One challenge particularly piqued my interest. I really like cryptography, so this one had my name on it. Some background...
 
-Name of Challenge:  Operation Enigma
+#### Name of Challenge:  Operation Enigma
 
-Details: Included was a description: 
-		We have intercepted two messages from Marshal of the Russian Federation, Barry.  We need you to work out what he is sharing with is Army General.
+#### Description:
+
+We have intercepted two messages from Marshal of the Russian Federation, Barry.  We need you to work out what he is sharing with is Army General.
 
 ### Cyphertext Samples
 
-1. Iptufyl,
+1.
+```
+Iptufyl,
 
 S jtwc didj spdspp jgekk lvg vu djrw ibrzlp zyg ekeb ztafayg. Kw'h tfjz u cgqit gakhm lo udwk nnxjduxkh, rmg G fyswwa ck znpa v rfofzh or pzgyatj ec tcqzkco qbxdkjyzngci tvn qlto zdbgmqjnql mfe beyoxzb.
 
@@ -22,8 +25,12 @@ Xt tp xypx ykgyzmx, C jryt gsuvzdz ka fmr zfuglydmu aexjwo yy umh zunrvluafg tyf
 Qqtwvzwpg,
 
 Jjtzh
+```
 
-2. Iptufyl,
+2.
+
+```
+Iptufyl,
 
 S vpvqd jfgl yfscbn apgbc mjx cnum vqf vj hyjc abkwuqh. Aq'x cphg swovemred ewxnyyheo xmxk U vqrwz mbj hb srg zwuju. Pkdu extyubdoku iri migwbhq pltg psos m eamjgh ee wnctm bv ra kqsg.
 
@@ -36,21 +43,22 @@ Eategyb tfbxk, E'o rftpavl hojzc mim brooafmhor mke emxhto olzlnytsfrz skkp zzg 
 Fpanbmnud,
 
 Zuljh
+```
 
 
 ### Initial analysis. 
 
-My 1st thought was to figure out what kind of cypher this was. Immediately, I noticed the lack of 5 letter groups and luck would have it have it, punctuation was included. Solving this cypher became infinitely more easy. 
+My 1st task was to figure out what kind of cypher this was. Immediately, I noticed the lack of 5 letter groups and luck would have it have it, punctuation was included. Solving this cypher became infinitely more easy. 
 
-Normally, the beginning is where I start. However the CTF challenge description led me to skip to the last grouping. My assumption was this was Barry. The letters added up. Quickly though I noticed the 1st group was the same in both cyphertexts. I returned to Barry. A quirk, I like quirks when it comes to solving cryptography, they help to make identification far easier. 
+Normally, the beginning is where I start. However the CTF challenge description led me to skip to the last grouping. My assumption was this group was Barry. The letters added up. Quickly though I noticed the 1st group was the same in both cyphertexts. I returned to Barry. A quirk, I like quirks when it comes to solving cryptography, they help to make encryption algorithm identification far easier. 
 
-My mind turned to letter frequency. It quickly became obvious this was a stream cypher. Which would make frequency analysis not useful for this challenge. All was not lost. I had a crib and some known plaintext. 
+My mind turned to letter frequency. It quickly became obvious this was a stream cypher. Which would make frequency analysis not useful for this challenge. All was not lost. I had a crib, known-plaintext attack was a possibility. 
 
-Around this time... my mind was starting to zone out. It had been nearly 3 days of hacking. I wanted to solve this challenge. For some inexplicable reason my mind turned to enigma. This cyphertext screamed enigma. Crib, stream cypher and the fact it was a CTF and enigma encryption is great CTF fodder. 
+Around this time... I was starting to zone out.  Lack of sleep was catching up with me. I wanted to solve this challenge. For some inexplicable reason my mind turned to enigma. The starting group, which turned out to be Comrade reminded me of "Wetter" of Bletchly Park fame. Though, the signing of the cryptotexts with Barry is more accurate of a comparison. This cyphertext screamed enigma. Crib, stream cypher and the fact it was a CTF... led me to conclude enigma was used. 
 
 ### Solving. 
 
-I went looking for an enigma simulator online. I thought I had already written a script to solve enigma (but I was tired and running quickly out of energy and time). But I knew the next step was to find the settings of the machine. I was running out of time to pull together a script for this particular crypto text. So I found a cool simulator and played around with settings. I didn't have too many clues at this point to the settings.  I stumbled on a site that would solve the crypto in one fell swoop by default. [Enigma Machine Simulator Online - DenCode](https://dencode.com/en/cipher/enigma) was the site. It found the correct settings.  It was an Enigma 1, which latter I noticed was a tip they gave. 
+I went looking for an enigma simulator online. I thought I had already written a script to solve enigma (but I was tired and running quickly out of energy and time). But I knew the next step was to find the settings of the machine. I was running out of time to pull together a script for this particular crypto text. So I found a cool online simulator and played around with settings. I didn't have too many clues at this point to the settings.  I stumbled on a site that would solve the crypto in one fell swoop by default. [Enigma Machine Simulator Online - DenCode](https://dencode.com/en/cipher/enigma) . It found the correct settings rather quickly and nabbed me the flag.  It was an Enigma 1, which latter I noticed was a tip the organisers gave. 
 
-The flag: 
+#### The flag: 
 FLAG{impressive}
