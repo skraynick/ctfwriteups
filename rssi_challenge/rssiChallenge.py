@@ -144,7 +144,7 @@ def read_combined_csv(csv_file):
 
 
 if __name__ == "__main__":
-
+    thing = "file_rssi.csv"
     load_rssi_with_positions("rssi", "receivers.csv")
 
     plot_df = pd.read_csv("combined_rssi.csv")
